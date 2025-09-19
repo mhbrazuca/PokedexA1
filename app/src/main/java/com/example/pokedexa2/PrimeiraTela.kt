@@ -38,7 +38,7 @@ class PrimeiraTela : ComponentActivity() {
 
 @Composable
 fun PokedexHomeScreen() {
-    // Usamos um Box para empilhar a cor de fundo e o conteúdo
+    // box para empilhar a cor de fundo e etc
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +51,7 @@ fun PokedexHomeScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Imagem da Pokébola (você já tem ela no seu projeto!)
+            
             Image(
                 painter = painterResource(id = R.drawable.pokeball),
                 contentDescription = "Pokebola Logo",
@@ -70,7 +70,7 @@ fun PokedexHomeScreen() {
 
             Spacer(modifier = Modifier.height(60.dp))
 
-            // Botões estilizados
+            // botões legaizinhos
             val context = androidx.compose.ui.platform.LocalContext.current
             PokedexHomeButton(text = "Ver Pokémon") {
                 val intent = Intent(context, SegundaTela::class.java)
@@ -87,7 +87,7 @@ fun PokedexHomeScreen() {
     }
 }
 
-// Criamos um Composable customizado para os botões para não repetir código
+
 @Composable
 fun PokedexHomeButton(text: String, onClick: () -> Unit) {
     Button(
@@ -106,7 +106,7 @@ fun PokedexHomeButton(text: String, onClick: () -> Unit) {
     }
 }
 
-// Um preview para você ver como fica sem precisar rodar o app!
+
 @Preview(showBackground = true)
 @Composable
 fun PokedexHomeScreenPreview() {
