@@ -12,14 +12,13 @@ import java.util.Locale
 
 class PokedexViewModel : ViewModel() {
 
-    // Guarda a lista completa de Pokémon que vem da API
     private var fullPokemonList by mutableStateOf<List<PokemonListItem>>(emptyList())
 
-    // NOVO: Guarda o texto que o usuário está digitando na busca
+    
     var searchText by mutableStateOf("")
         private set
 
-    // NOVO: A lista que a tela vai exibir. Ela já vem filtrada.
+    
     val filteredPokemonList: List<PokemonListItem>
         get() = if (searchText.isBlank()) {
             fullPokemonList
@@ -36,7 +35,7 @@ class PokedexViewModel : ViewModel() {
         fetchPokemonList()
     }
 
-    // NOVO: Função que será chamada cada vez que o usuário digitar algo.
+    
     fun onSearchTextChange(newText: String) {
         searchText = newText
     }
@@ -45,7 +44,7 @@ class PokedexViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = PokemonApi.retrofitService.getPokemonList()
-                // Agora guardamos a resposta na lista completa e privada
+                // agora guardamos a resposta na lista completa e privada
                 fullPokemonList = response.results
             } catch (e: Exception) {
                 errorMessage = "Falha ao carregar dados: ${e.message}"
