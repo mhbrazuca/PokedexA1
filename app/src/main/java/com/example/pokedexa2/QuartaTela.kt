@@ -30,7 +30,7 @@ class QuartaTela : ComponentActivity() {
 
         setContent {
             PokedexMobileTheme {
-                // Passa o nome do Pokémon para a nossa tela
+                
                 PokemonDetailScreen(pokemonName = pokemonName)
             }
         }
@@ -39,9 +39,8 @@ class QuartaTela : ComponentActivity() {
 
 @Composable
 fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewModel = viewModel()) {
-    // LaunchedEffect é usado para chamar uma função suspend (como a nossa busca na API)
-    // de forma segura quando o Composable é criado.
-    // Ele vai chamar 'fetchPokemonDetails' apenas uma vez quando a tela abrir.
+    // LaunchedEffect é pra chamar uma função suspend (busca na API)
+    // ele vai chamar 'fetchPokemonDetails' apenas uma vez quando a tela abrir.
     LaunchedEffect(Unit) {
         detailViewModel.fetchPokemonDetails(pokemonName)
     }
@@ -49,20 +48,20 @@ fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewM
     val pokemonDetails = detailViewModel.pokemonDetails
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        // Se os detalhes ainda não carregaram, mostra uma tela de carregamento.
+    
         if (pokemonDetails == null) {
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator()
             }
         } else {
-            // Quando os detalhes chegarem, mostra o conteúdo.
+            
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Imagem do Pokémon
+                
                 AsyncImage(
                     model = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDetails.id}.png",
                     contentDescription = pokemonDetails.name,
@@ -71,7 +70,7 @@ fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewM
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Nome do Pokémon
+                
                 Text(
                     text = pokemonDetails.name.capitalizeFirst(),
                     fontSize = 32.sp,
@@ -80,7 +79,7 @@ fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewM
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Tipos do Pokémon (Fogo, Água, etc.)
+                
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -91,7 +90,7 @@ fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewM
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Status (HP, Ataque, Defesa...)
+                
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text("Status", fontSize = 22.sp, fontWeight = FontWeight.SemiBold)
                     Spacer(modifier = Modifier.height(8.dp))
@@ -104,7 +103,7 @@ fun PokemonDetailScreen(pokemonName: String, detailViewModel: PokemonDetailViewM
     }
 }
 
-// Um Composable para mostrar os 'chips' de tipo do Pokémon
+
 @Composable
 fun PokemonTypeChip(type: String) {
     Box(
@@ -121,7 +120,7 @@ fun PokemonTypeChip(type: String) {
     }
 }
 
-// Um Composable para mostrar cada linha de status
+
 @Composable
 fun StatRow(statName: String, statValue: Int) {
     Row(
@@ -132,15 +131,15 @@ fun StatRow(statName: String, statValue: Int) {
     ) {
         Text(text = statName.capitalizeFirst(), modifier = Modifier.width(120.dp))
         Text(text = statValue.toString(), fontWeight = FontWeight.Bold, modifier = Modifier.width(40.dp))
-        // Barra de progresso para visualizar a força do status
+       
         LinearProgressIndicator(
-            progress = { statValue / 200f }, // Normaliza o valor (dividindo por um máximo aproximado)
+            progress = { statValue / 200f }, 
             modifier = Modifier.height(8.dp).clip(RoundedCornerShape(4.dp))
         )
     }
 }
 
-// Função auxiliar para definir a cor de cada tipo de Pokémon
+
 fun getColorForType(type: String): Color {
     return when (type.lowercase()) {
         "normal" -> Color(0xFFA8A77A)
