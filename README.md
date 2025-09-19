@@ -8,7 +8,7 @@ Feito por:
 
 ## 📌 Sobre o Projeto  
 Este é um projetinho simples em **Kotlin** que simula uma **Pokédex**.  
-O aplicativo possui três telas principais:  
+O aplicativo possui 4 telas principais:  
 
 1. **Tela Inicial (Intro)** → intro a pokedex, escolha ir para pokedex ou itens.  
 2. **Tela de Descrição** → mostra todos os pokemons.  
