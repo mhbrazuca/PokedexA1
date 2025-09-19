@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-// Verifique se todos os imports são do 'material3'
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -26,7 +25,7 @@ import coil.compose.AsyncImage
 import com.example.pokedexa2.network.ItemListItem
 import com.example.pokedexa2.ui.theme.PokedexMobileTheme
 
-// A anotação para permitir o uso de componentes experimentais
+
 @OptIn(ExperimentalMaterial3Api::class)
 class TerceiraTela : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,7 @@ fun ItemScreen(itemListViewModel: ItemListViewModel) {
 
     Scaffold(
         topBar = {
-            // Agora o TopAppBar deve estar correto
+            
             TopAppBar(title = { Text("Itens da Bolsa") })
         }
     ) { innerPadding ->
