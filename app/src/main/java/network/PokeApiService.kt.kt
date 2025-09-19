@@ -56,11 +56,11 @@ interface PokeApiService {
     @GET("pokemon")
     suspend fun getPokemonList(@Query("limit") limit: Int = 151): PokemonListResponse
 
-    // Busca detalhes de um Pokémon
+    // Busca detalhes de um Pokémon testezinho
     @GET("pokemon/{name}")
     suspend fun getPokemonDetail(@Path("name") name: String): PokemonDetailResponse
 
-    // Busca a lista de itens (NOVA FUNÇÃO)
+    // Busca a lista de itens testezinho
     @GET("item")
     suspend fun getItemList(@Query("limit") limit: Int = 100): ItemListResponse // Buscando 100 itens
 }
