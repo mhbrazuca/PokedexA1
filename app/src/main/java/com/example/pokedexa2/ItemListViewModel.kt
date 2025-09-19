@@ -9,7 +9,7 @@ import com.example.pokedexa2.network.ItemListItem
 import com.example.pokedexa2.network.PokemonApi
 import kotlinx.coroutines.launch
 
-// ViewModel para a tela de lista de itens
+
 class ItemListViewModel : ViewModel() {
 
     var itemList by mutableStateOf<List<ItemListItem>>(emptyList())
@@ -25,7 +25,7 @@ class ItemListViewModel : ViewModel() {
     private fun fetchItemList() {
         viewModelScope.launch {
             try {
-                // Chama a nova função da nossa API
+            
                 val response = PokemonApi.retrofitService.getItemList()
                 itemList = response.results
             } catch (e: Exception) {
